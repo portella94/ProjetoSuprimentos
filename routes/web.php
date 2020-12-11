@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::group(['prefix' => 'usuarios'], function () {
-    Route::get('/', [UsuarioController::class, 'index']);
-});
+// Route::group(['prefix' => 'usuarios'], function () {
+//     Route::get('/', [UsuarioController::class, 'index']);
+// });
+Route::resource('usuarios', UsuarioController::class);
 Route::group(['prefix' => 'produtos'], function () {
     Route::get('/', [ProdutoController::class, 'index']);
     Route::get('/novo', [ProdutoController::class, 'new'])->name('produto.new');
