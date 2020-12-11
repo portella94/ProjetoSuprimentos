@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-
-class UsuarioController extends Controller
+class HomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,9 +16,6 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $usuarios = User::all();
-        return view('usuarios.index', compact(['usuarios']));
+        return view('index');
     }
-
-    //
 }

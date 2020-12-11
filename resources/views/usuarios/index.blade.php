@@ -3,25 +3,25 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <h1 class="display-3">Produtos Cadastrados</h1>
+        <h1 class="display-3">Usuários Cadastrados</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td>Referencia</td>
                     <td>Nome</td>
-                    <td>Marca</td>
+                    <td>Telefone</td>
+                    <td>Email</td>
                     <td>Ações</td>
                 </tr>
             </thead>
             <tbody>
-                @forelse($produtos as $produto)
+                @forelse($usuarios as $usuario)
                 <tr>
-                    <td>{{$produto->referencia}}</td>
-                    <td>{{$produto->nome}}</td>
-                    <td>{{$produto->marca}}</td>
+                    <td>{{$usuario->nome}}</td>
+                    <td>{{$usuario->telefone}}</td>
+                    <td>{{$usuario->email}}</td>
                     <td>
-                        <a href="{{ route('produtos.edit', $produto->id)}}" class="btn btn-primary">Editar</a>
-                        <form action="{{ route('produtos.delete', $produto->id)}}" method="delete">
+                        <a href="{{ route('produtos.edit', $usuario->getKey())}}" class="btn btn-primary">Editar</a>
+                        <form action="{{ route('produtos.delete', $usuario->getKey())}}" method="delete">
                             <button class="btn btn-danger" type="submit">Excluir</button>
                         </form>
                     </td>

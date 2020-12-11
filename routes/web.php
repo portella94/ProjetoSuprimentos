@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [HomeController::class, 'index']);
+Route::group(['prefix' => 'usuarios'], function () {
+    Route::get('/', [UsuarioController::class, 'index']);
+});
+Route::group(['prefix' => 'produtos'], function () {
+    Route::get('/', [ProdutoController::class, 'index']);
+    Route::get('/novo', [ProdutoController::class, 'new'])->name('produto.new');
+    Route::post('/create', [ProdutoController::class, 'create'])->name('produto.create');
+    Route::get('/editar/{id}', [ProdutoController::class, 'new'])->name('produto.new');
 });
